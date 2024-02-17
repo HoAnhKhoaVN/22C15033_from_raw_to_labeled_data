@@ -1,3 +1,4 @@
+import argparse
 import os
 from typing import Text, List
 from tqdm import tqdm
@@ -66,9 +67,20 @@ class SplitTrainValTest(object):
         # endregion
         
 if __name__ == '__main__':
-    LABEL_PATH = 'xi_mang_go/labeled/xi_mang/1k/Label_1k.txt'
+    # LABEL_PATH = 'xi_mang_go/labeled/xi_mang/1k/Label_1k.txt'
+
+    # region get argument
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '-lb', 
+        '--label_txt',  
+        help="Path to Label.txt."
+    )
+
+    args = parser.parse_args()
+    # endregon
     obj = SplitTrainValTest(
-        label_path = LABEL_PATH,
+        label_path = args.label_txt,
     )
 
     obj()
