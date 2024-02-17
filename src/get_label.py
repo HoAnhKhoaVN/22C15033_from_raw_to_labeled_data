@@ -1,3 +1,4 @@
+import argparse
 import os
 from typing import Text, List
 
@@ -47,14 +48,45 @@ class GetLabel(object):
     
 
 if __name__ == '__main__':
-    PATH = 'xi_mang_go/xi_mang/Label.txt'
-    NEW_PATH = 'xi_mang_go/labeled/xi_mang/1k/Label_1k.txt'
-    START = 1
-    END =  1000
-    obj = GetLabel(
-        path = PATH,
-        start = START,
-        end = END
+    # PATH = 'xi_mang_go/xi_mang/Label.txt'
+    # NEW_PATH = 'xi_mang_go/labeled/xi_mang/1k/Label_1k.txt'
+    # START = 1
+    # END =  1000
+
+    # region get argument
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '-lb', 
+        '--label_txt',  
+        help="Path to Label.txt."
     )
 
-    obj.save(NEW_PATH)
+    parser.add_argument(
+        '-nlb', 
+        '--new_label_txt',  
+        help="Path new label path."
+    )
+
+    parser.add_argument(
+        '-s', 
+        '--start',  
+        help="Start index"
+    )
+
+    parser.add_argument(
+        '-e', 
+        '--end',  
+        help="End index"
+    )src/zip_file.py
+
+    args = parser.parse_args()
+    # endregon
+
+
+    obj = GetLabel(
+        path = args.label_txt,
+        start = args.start,
+        end = args.end
+    )
+
+    obj.save(args.new_label_txt)
