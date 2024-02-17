@@ -6,16 +6,14 @@ ROOT="D:/Master/OCR_Nom/fulllow_ocr_temple/dataset/labeling/sence_text/xi_mang_g
 LABEL_PATH='D:/Master/OCR_Nom/fulllow_ocr_temple/dataset/labeling/sence_text/xi_mang_go/xi_mang/Label.txt'
 NEW_LABEL_PATH=$ROOT/Label_100.txt
 IMG_PATH=$ROOT/img
-START=1000
-END=1020
+START=1
+END=100
 
 ##################
 ### END CHANGE ###
 ##################
 
 echo "###0. Preprocess"
-mkdir -p $ROOT
-mkdir -p $IMG_PATH
 
 echo "### 1. GET LABEL ###"
 python3 src/get_label.py --label_txt $LABEL_PATH \
