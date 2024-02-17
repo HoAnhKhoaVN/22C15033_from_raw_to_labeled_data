@@ -77,7 +77,7 @@ if __name__ == '__main__':
         '-e', 
         '--end',  
         help="End index"
-    )src/zip_file.py
+    )
 
     args = parser.parse_args()
     # endregon
