@@ -48,11 +48,6 @@ class GetLabel(object):
     
 
 if __name__ == '__main__':
-    # PATH = 'xi_mang_go/xi_mang/Label.txt'
-    # NEW_PATH = 'xi_mang_go/labeled/xi_mang/1k/Label_1k.txt'
-    # START = 1
-    # END =  1000
-
     # region get argument
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -85,8 +80,8 @@ if __name__ == '__main__':
 
     obj = GetLabel(
         path = args.label_txt,
-        start = args.start,
-        end = args.end
+        start = int(args.start),
+        end = int(args.end)
     )
 
     obj.save(args.new_label_txt)
