@@ -1,3 +1,4 @@
+import argparse
 import os
 from typing import Text, List
 from tqdm import tqdm
@@ -45,11 +46,29 @@ class MatchImgWithLabel(object):
 
 
 if __name__ == '__main__':
-    LABEL_PATH = 'xi_mang_go/labeled/xi_mang/1k/Label_1k.txt'
-    IMG_PATH = 'xi_mang_go/labeled/xi_mang/1k/img/good_fd'
+    # LABEL_PATH = 'xi_mang_go/labeled/xi_mang/1k/Label_1k.txt'
+    # IMG_PATH = 'xi_mang_go/labeled/xi_mang/1k/img/good_fd'
+
+    # region get argument
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        '-lb', 
+        '--label_txt',  
+        help="Path to Label.txt."
+    )
+
+    parser.add_argument(
+        '-img', 
+        '--img_path',  
+        help="Path images."
+    )
+
+    args = parser.parse_args()
+    # endregon
+
     obj = MatchImgWithLabel(
-        label_path = LABEL_PATH,
-        img_path = IMG_PATH
+        label_path = args.label_txt,
+        img_path = args.img_path
     )
 
     obj()
