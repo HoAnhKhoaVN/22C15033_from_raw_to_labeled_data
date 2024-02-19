@@ -40,5 +40,34 @@ python3 src/match_image_with_label.py --label_txt $NEW_LABEL_PATH \
 echo "### 5. SPLIT TRAIN TEST ###"
 python3 src/split_train_test.py --label_txt $NEW_LABEL_PATH
 
-echo "### 6. ZIP FILE"
+echo "### 6. MOVE  FILE"
+TRAIN_IMG=$ROOT/train
+VAL_IMG=$ROOT/val
+TEST_IMG=$ROOT/test
+
+mkdir -p $TRAIN_IMG
+mkdir -p $VAL_IMG
+mkdir -p $TEST_IMG
+
+TRAIN_LABEL=$ROOT/train.txt
+VAL_LABEL=$ROOT/val.txt
+TEST_LABEL=$ROOT/test.txt
+
+echo "### 6.1 MOVE TRAIN IMAGES"
+python3 src/split_image.py --label_txt $TRAIN_LABEL \
+                           --src_img $GOOD_IMG \
+                           --tgt_img $TRAIN_IMG
+
+
+echo "### 6.2 MOVE VAL IMAGES"
+python3 src/split_image.py --label_txt $VAL_LABEL \
+                           --src_img $GOOD_IMG \
+                           --tgt_img $VAL_IMG
+
+echo "### 6.1 MOVE TEST IMAGES"
+python3 src/split_image.py --label_txt $TEST_LABEL \
+                           --src_img $GOOD_IMG \
+                           --tgt_img $TEST_IMG
+
+echo "### 7. ZIP FILE"
 python3 src/zip_file.py --root $ROOT

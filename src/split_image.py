@@ -26,11 +26,11 @@ class SplitImage(object):
                     basename
                 )
                 tgt = os.path.join(
-                    self.tgt,
+                    self.tgt_img,
                     basename
                 )
 
-                os.system(f'cp {src} {tgt}')
+                os.system(f'mv {src} {tgt}')
         
         
 if __name__ == '__main__':
