@@ -37,6 +37,12 @@ pip install -r requirements.txt
 sh script/run.sh
 ```
 
+### Generate fileState.txt for PPOCRLabel
+Change code in `src/gen_file_state.py` and run command:
+```sh
+python3 src/gen_file_state.py
+```
+
 <a id ="item-three"></a>
 
 ## 3. Architechture
